@@ -1,14 +1,17 @@
 #include "../insight.h"
 #include <windows.h>
 
-std::string G::Insight::Insight::getType()
+namespace G::Insight
 {
-    return "Cygwin";
-}
+    std::string Insight::getType()
+    {
+        return "Cygwin";
+    }
 
-uint32_t G::Insight::Insight::getPhysicalCpuCores()
-{
-    SYSTEM_INFO info;
-    GetSystemInfo(&info);
-    return info.dwNumberOfProcessors;
+    uint32_t Insight::getLogicalCpuCores()
+    {
+        SYSTEM_INFO info;
+        GetSystemInfo(&info);
+        return info.dwNumberOfProcessors;
+    }
 }
